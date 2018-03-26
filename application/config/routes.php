@@ -64,52 +64,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['auth'] = 'AuthController';
 $route['auth/(:any)'] = 'AuthController/$1';
 
-$route['dashboard'] = 'DashboardController';
+$route['register'] = 'RegisterController';
+$route['register/(:any)'] = 'RegisterController/$1';
 
-$route['customs-invoice'] = 'CustomsInvoiceController';
-$route['customs-invoice/(:any)'] = 'CustomsInvoiceController/$1';
-$route['customs-invoice/(:any)/(:any)'] = 'CustomsInvoiceController/$1/$2';
-
-$route['bc16'] = 'Bc16Controller';
-$route['bc16/(:any)'] = 'Bc16Controller/$1';
-$route['bc16/(:any)/(:any)'] = 'Bc16Controller/$1/$2';
-
-$route['wms'] = 'WmsController';
-$route['wms/(:any)'] = 'WmsController/$1';
-
-$route['report/inventory'] = 'ReportInventoryController';
-$route['report/inventory/(:any)'] = 'ReportInventoryController/$1';
-
-$route['reference/courier'] = 'ReferenceCourierController';
-$route['reference/courier/(:any)'] = 'ReferenceCourierController/$1';
-$route['reference/courier/(:any)/(:any)'] = 'ReferenceCourierController/$1/$2';
-
-$route['reference/warehouse'] = 'ReferenceWarehouseController';
-$route['reference/warehouse/(:any)'] = 'ReferenceWarehouseController/$1';
-$route['reference/warehouse/(:any)/(:any)'] = 'ReferenceWarehouseController/$1/$2';
-
-$route['reference/classification'] = 'ReferenceClassificationController';
-$route['reference/classification/(:any)'] = 'ReferenceClassificationController/$1';
-$route['reference/classification/(:any)/(:any)'] = 'ReferenceClassificationController/$1/$2';
-
-$route['reference/creator'] = 'ReferenceCreatorController';
-$route['reference/creator/(:any)'] = 'ReferenceCreatorController/$1';
-$route['reference/creator/(:any)/(:any)'] = 'ReferenceCreatorController/$1/$2';
-
-$route['reference/origin'] = 'ReferenceOriginController';
-$route['reference/origin/(:any)'] = 'ReferenceOriginController/$1';
-$route['reference/origin/(:any)/(:any)'] = 'ReferenceOriginController/$1/$2';
-
-$route['reference/part'] = 'ReferencePartController';
-$route['reference/part/(:any)'] = 'ReferencePartController/$1';
-$route['reference/part/(:any)/(:any)'] = 'ReferencePartController/$1/$2';
-
-$route['reference/project'] = 'ReferenceProjectController';
-$route['reference/project/(:any)'] = 'ReferenceProjectController/$1';
-$route['reference/project/(:any)/(:any)'] = 'ReferenceProjectController/$1/$2';
-
-$route['reference/rem'] = 'ReferenceRemController';
-$route['reference/rem/(:any)'] = 'ReferenceRemController/$1';
-$route['reference/rem/(:any)/(:any)'] = 'ReferenceRemController/$1/$2';
-
-$route['report/inventory'] = 'ReportInventoryController';

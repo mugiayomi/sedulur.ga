@@ -14,10 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Document Wrapper
 	============================================= -->
-	<div id="wrapper" class="clearfix" style="background-color:#2C3E50">
+	<div id="wrapper" class="clearfix">
 
 		<?php include APPPATH . "views/frontend/includes/topbar.php" ?>
 		<?php include APPPATH . "views/frontend/includes/header.php" ?>
+		<?php include APPPATH . "views/frontend/includes/slider.php" ?>
 
 		<!-- Content
 		============================================= -->
@@ -25,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php $module_page = APPPATH . "views/frontend/".$page.".php"; ?>
 			<?php include $module_page ?>
 		</section><!-- #content end -->
+
 	
 		<?php include APPPATH . "views/frontend/includes/footer.php" ?>
 	</div><!-- #wrapper end -->
