@@ -2,6 +2,8 @@
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
 
+	<div id="kentongan" class="icon-angle-down"></div>
+
 	<!-- External JavaScripts
 	============================================= -->
 	<script src="<?=base_url()?>assets/frontend/js/jquery.js"></script>

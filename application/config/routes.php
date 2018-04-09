@@ -88,4 +88,12 @@ $route['admin/info'] = 'InfoController';
 $route['admin/info/(:any)'] = 'InfoController/$1';
 $route['admin/info/(:any)/(:any)'] = 'InfoController/$1/$2';
 
+$route['admin/arisan'] = 'ArisanController';
+$route['admin/arisan/(:any)'] = 'ArisanController/$1';
+$route['admin/arisan/(:any)/(:any)'] = 'ArisanController/$1/$2';
+
+$route['admin/produk'] = 'ProdukController';
+$route['admin/produk/(:any)'] = 'ProdukController/$1';
+$route['admin/produk/(:any)/(:any)'] = 'ProdukController/$1/$2';
+
 

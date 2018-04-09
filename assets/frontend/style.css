@@ -11511,7 +11511,7 @@ input[type=checkbox]:not(:checked) + label.error { display: block !important; }
 -----------------------------------------------------------------*/
 
 
-#gotoTop {
+#gotoTop, #kentongan {
 	display: none;
 	z-index: 299;
 	position: fixed;

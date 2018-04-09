@@ -4,7 +4,7 @@
 	<!-- END SIDEBAR MENU TOP TRAY CONTENT-->
 	<!-- BEGIN SIDEBAR MENU HEADER-->
 	<div class="sidebar-header">
-		<img src="<?=base_url()?>assets/backend/assets/img/logo_sedulur.png" alt="logo" class="brand" data-src="<?=base_url()?>assets/backend/assets/img/logo_sedulur.png" data-src-retina="<?=base_url()?>assets/backend/assets/img/logo_sedulur2x.png"
+		<img onclick="javascript:redirect(<?=base_url()?>)" src="<?=base_url()?>assets/backend/assets/img/logo_sedulur.png" alt="logo" class="brand" data-src="<?=base_url()?>assets/backend/assets/img/logo_sedulur.png" data-src-retina="<?=base_url()?>assets/backend/assets/img/logo_sedulur2x.png"
 		width="78" height="22">
 	</div>
 	<!-- END SIDEBAR MENU HEADER-->
@@ -44,12 +44,28 @@
 					<i data-feather="calendar"></i>
 				</span>
 			</li>
-			<li class="">
+			<!-- <li class="">
 				<a href="<?=base_url('admin/info')?>">
 					<span class="title">Info Penting</span>
 				</a>
 				<span class="icon-thumbnail">
 					<i data-feather="airplay"></i>
+				</span>
+			</li> -->
+			<li class="">
+				<a href="<?=base_url('admin/arisan')?>">
+					<span class="title">Arisan</span>
+				</a>
+				<span class="icon-thumbnail">
+					<i data-feather="shopping-bag"></i>
+				</span>
+			</li>
+			<li class="">
+				<a href="<?=base_url('admin/produk')?>">
+					<span class="title">Produk</span>
+				</a>
+				<span class="icon-thumbnail">
+					<i data-feather="shopping-cart"></i>
 				</span>
 			</li>
 		</ul>
