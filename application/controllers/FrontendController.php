@@ -11,6 +11,12 @@ class FrontendController extends CI_Controller {
 	{
 		$data['title'] = 'Beranda';
 		$data['page'] = 'home';
+
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+
 		$this->load->view('frontend/home_layout', $data);
 	}
 

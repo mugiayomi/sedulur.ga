@@ -10,25 +10,18 @@
 
 		<div class="widget clearfix">
 
-			<!-- <h4 class="t400">Masuk dengan Akun SocMed</h4>
-
-			<a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-facebook">Facebook</a>
-			<a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-gplus">Google</a>
-
-			<div class="line"></div> -->
-
 			<h4 class="t400">Sudah punya akun?</h4>
 
 			<form id="login-form" name="login-form" class="nobottommargin" action="<?=base_url('auth/doLogin')?>" method="post">
-
+				<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 				<div class="col_full">
-					<label for="login-form-username" class="t400">Username:</label>
-					<input type="text" id="login-form-username" name="login-form-username" value="" class="form-control" />
+					<label for="email" class="t400">Email:</label>
+					<input type="text" id="email" name="email" class="form-control" required />
 				</div>
 
 				<div class="col_full">
-					<label for="login-form-password" class="t400">Password:</label>
-					<input type="password" id="login-form-password" name="login-form-password" value="" class="form-control" />
+					<label for="password" class="t400">Password:</label>
+					<input type="password" id="password" name="password" class="form-control" required/>
 				</div>
 
 				<div class="col_full nobottommargin">

@@ -56,14 +56,36 @@ $route['500_override'] = 'ErrorController/error_500';
 $route['translate_uri_dashes'] = FALSE;
 
 // FRONTEND
-
-
-// BACKEND
-
+$route['json/(:any)'] = 'JsonController/$1';
+$route['json/(:any)/(:any)'] = 'JsonController/$1/$2';
 
 $route['auth'] = 'AuthController';
 $route['auth/(:any)'] = 'AuthController/$1';
 
 $route['register'] = 'RegisterController';
 $route['register/(:any)'] = 'RegisterController/$1';
+
+$route['profile'] = 'ProfileController';
+$route['profile/(:any)'] = 'ProfileController/$1';
+
+// BACKEND
+$route['admin'] = 'DashboardController';
+$route['admin/dashboard'] = 'DashboardController';
+
+$route['admin/kelompok-rt'] = 'KelompokRtController';
+$route['admin/kelompok-rt/(:any)'] = 'KelompokRtController/$1';
+$route['admin/kelompok-rt/(:any)/(:any)'] = 'KelompokRtController/$1/$2';
+
+$route['admin/warga'] = 'WargaController';
+$route['admin/warga/(:any)'] = 'WargaController/$1';
+$route['admin/warga/(:any)/(:any)'] = 'WargaController/$1/$2';
+
+$route['admin/agenda'] = 'AgendaController';
+$route['admin/agenda/(:any)'] = 'AgendaController/$1';
+$route['admin/agenda/(:any)/(:any)'] = 'AgendaController/$1/$2';
+
+$route['admin/info'] = 'InfoController';
+$route['admin/info/(:any)'] = 'InfoController/$1';
+$route['admin/info/(:any)/(:any)'] = 'InfoController/$1/$2';
+
 

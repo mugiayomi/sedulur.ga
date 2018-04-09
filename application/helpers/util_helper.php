@@ -215,10 +215,11 @@ if (!function_exists('terbilang')) {
 
 if (!function_exists('setFlashMessage')) {
 
-    function setFlashMessage($type, $message) {
+    function setFlashMessage($type, $title, $message) {
         $CI = & get_instance();  //get instance, access the CI superobject
 
         $CI->session->set_flashdata('status', $type);
+        $CI->session->set_flashdata('title', $title);
         $CI->session->set_flashdata('message', $message);
     }
 
