@@ -55,31 +55,71 @@ class AgendaController extends CI_Controller {
 	public function store()
 	{
 		$data = $this->input->post();
+		$data['slug'] = slugify($data['judul']);
+		$data['id_user'] = $this->session->userdata['logged_in']->id;
 		
 		$waktu = explode(' - ', $data['waktu']);
 		$data['tanggal_mulai'] = $waktu[0];
 		$data['tanggal_akhir'] = $waktu[1];
 
 		unset($data['waktu']);
-								
-		if ($this->agenda_model->store($data)) {
-			setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+
+		$config['upload_path']          = 'uploads/agenda/';
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['max_size']             = 2000;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('gambar'))
+		{
+				$error = array('error' => $this->upload->display_errors());
+
+                $this->session->set_flashdata('message', 'Gagal upload, ' . $error);
+                redirect(base_url() . 'admin/agenda');
+                exit;
 		} else {
-			setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
-		}
-					
-		redirect(base_url() . 'admin/agenda');  
+                $upload_data = $this->upload->data();
+                $url_foto = 'uploads/agenda/' . $upload_data['file_name'];
+                
+                $data['gambar'] = $url_foto;
+								
+				if ($this->agenda_model->store($data)) {
+					setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+				} else {
+					setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
+				}
+							
+				redirect(base_url() . 'admin/agenda'); 
+        }
+								
+		 
 	}
 
 	public function update()
 	{
 		$data = $this->input->post();
+		$data['slug'] = slugify($data['judul']);
 		
 		$waktu = explode(' - ', $data['waktu']);
 		$data['tanggal_mulai'] = $waktu[0];
 		$data['tanggal_akhir'] = $waktu[1];
 
 		unset($data['waktu']);
+
+		$config['upload_path']          = 'uploads/agenda/';
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['max_size']             = 2000;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('gambar'))
+		{
+                $upload_data = $this->upload->data();
+                $url_foto = 'uploads/agenda/' . $upload_data['file_name'];
+                
+                $data['gambar'] = $url_foto;
+		}
+
 								
 		if ($this->agenda_model->update($data)) {
 			setFlashMessage('success', "Selamat.", "Data Berhasil diupdate.");

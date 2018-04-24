@@ -70,7 +70,7 @@ class AuthController extends CI_Controller {
 	public function doLogout()
 	{
 		$this->session->sess_destroy();
-        redirect(base_url());
+        redirect(base_url('auth'));
         exit;
 	}
 

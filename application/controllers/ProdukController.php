@@ -55,15 +55,39 @@ class ProdukController extends CI_Controller {
 	public function store()
 	{
 		$data = $this->input->post();
+		$data['slug'] = slugify($data['nama']);
 		$data['id_user'] = $this->session->userdata['logged_in']->id;
-								
-		if ($this->produk_model->store($data)) {
-			setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+							
+		$config['upload_path']          = 'uploads/product/';
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['max_size']             = 2000;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('gambar'))
+		{
+				$error = array('error' => $this->upload->display_errors());
+
+                $this->session->set_flashdata('message', 'Gagal upload, ' . $error);
+                redirect(base_url() . 'admin/produk');
+                exit;
 		} else {
-			setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
+                $upload_data = $this->upload->data();
+                $url_foto = 'uploads/product/' . $upload_data['file_name'];
+                
+                $dataGambar['gambar'] = $url_foto;
+                
+				$dataGambar['id_produk'] = $this->produk_model->store($data);	
+
+				$dataGambar['is_primary'] = '1';
+				if ($this->produk_model->storeGambar($dataGambar)) {
+					setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+				} else {
+					setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
+				}
+							
+				redirect(base_url() . 'admin/produk');  
 		}
-					
-		redirect(base_url() . 'admin/produk');  
 	}
 
 	public function update()

@@ -17,10 +17,43 @@ class Arisan_model extends CI_Model {
         // $this->db->join('TBL_USER c', 'a.nik = c.nik', 'LEFT');
         return $this->db->get($this->tableAlias)->result();
     }
+
+    function get_list_arisan_user($id_user = null) {
+        $this->db->select('a.*, b.id as id_peserta_arisan');
+        $this->db->join('TBL_PESERTA_ARISAN b', "b.id_arisan = a.id and b.id_user = '$id_user'", 'LEFT');
+        return $this->db->get($this->tableAlias)->result();
+    }
+
+    function get_list_peserta_arisan($id_arisan = null) {
+        // $this->db->select('a.*, b.id as id_peserta_arisan');
+        $this->db->join('TBL_USER b', "b.id = a.id_user", 'LEFT');
+        $this->db->join('TBL_WARGA c', "b.nik = c.nik", 'LEFT');
+        $this->db->join('TBL_PERIODE_ARISAN d', "d.id_arisan= a.id_arisan and d.id_peserta_arisan = b.id", 'LEFT');
+        $this->db->where("a.id_arisan = '$id_arisan'");
+        return $this->db->get('TBL_PESERTA_ARISAN a')->result();
+    }
     
     function store($data) {
         try {
             $this->db->insert($this->table, $data);
+            return true;
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
+
+    function storePeserta($data) {
+        try {
+            $this->db->insert('TBL_PESERTA_ARISAN', $data);
+            return true;
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
+
+    function storeBayar($data) {
+        try {
+            $this->db->insert('TBL_PERIODE_ARISAN', $data);
             return true;
         } catch (Exception $exc) {
             return false;

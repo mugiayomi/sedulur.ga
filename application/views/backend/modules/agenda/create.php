@@ -5,7 +5,7 @@
 			<!-- START card -->
 			<div class="card card-transparent">
 				<div class="card-block">
-					<form method="POST" action="<?=base_url('admin/agenda/store')?>" role="form" autocomplete="off">
+					<form method="POST" action="<?=base_url('admin/agenda/store')?>" role="form" autocomplete="off" enctype="multipart/form-data">
 						<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						<div class="row">
 							<div class="col-md-12">
@@ -35,6 +35,16 @@
 									<span class="add-on input-group-addon"><i
 													class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
 									<input type="text" style="width: 100%" name="waktu" id="daterangepicker" class="form-control text-black" value="" placeholder="Waktu Pelaksanaan" readonly />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group form-group-default input-group">
+									<div class="form-input-group">
+										<label>Gambar </label>
+										<input type="file" class="form-control" name="gambar" placeholder="Gambar">
 									</div>
 								</div>
 							</div>

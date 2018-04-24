@@ -130,6 +130,47 @@ if (!function_exists('toNamaBulan')) {
 
 }
 
+if (!function_exists('toNamaBulanPendek')) {
+
+    function toNamaBulanPendek($waktu) {
+      //  if ($angka != null) {
+           // $tanggal = explode(' ', $datawaktu);
+            //$angka = $waktu;
+            if ($waktu == '01') { //jika 01 maka januari
+                $bulan = 'Jan';
+            } elseif ($waktu == '02') {
+                $bulan = 'Feb';
+            } elseif ($waktu == '03') {
+                $bulan = 'Mar';
+            } elseif ($waktu == '04') {
+                $bulan = 'Apr';
+            } elseif ($waktu == '05') {
+                $bulan = 'Mei';
+            } elseif ($waktu == '06') {
+                $bulan = 'Jun';
+            } elseif ($waktu == '07') {
+                $bulan = 'Jul';
+            } elseif ($waktu == '08') {
+                $bulan = 'Agu';
+            } elseif ($waktu == '09') {
+                $bulan = 'Sep';
+            } elseif ($waktu == '10') {
+                $bulan = 'Okt';
+            } elseif ($waktu == '11') {
+                $bulan = 'Nov';
+            } elseif ($waktu == '12') {
+                $bulan = 'Des';
+            } else {
+                $bulan = '00';
+            }
+
+            return "$bulan";
+        }
+       // return "-";
+   // }
+
+}
+
 if (!function_exists('toMysqlDate')) { // dd-mm-yyyy to yyyy-mm-dd
 
     function toMysqlDate($dataTanggal) {
@@ -223,4 +264,32 @@ if (!function_exists('setFlashMessage')) {
         $CI->session->set_flashdata('message', $message);
     }
 
+}
+
+if (!function_exists('getExcerpt')) {
+
+    function getExcerpt( $content, $length = 40, $more = '...' ) {
+        $excerpt = strip_tags( trim( $content ) );
+        $words = str_word_count( $excerpt, 2 );
+        if ( count( $words ) > $length ) {
+            $words = array_slice( $words, 0, $length, true );
+            end( $words );
+            $position = key( $words ) + strlen( current( $words ) );
+            $excerpt = substr( $excerpt, 0, $position ) . $more;
+        }
+        return $excerpt;
+    }
+
+}
+
+if (!function_exists('slugify')) {
+
+    function slugify($str) {
+        $search = array('Ș', 'Ț', 'ş', 'ţ', 'Ş', 'Ţ', 'ș', 'ț', 'î', 'â', 'ă', 'Î', 'Â', 'Ă', 'ë', 'Ë');
+        $replace = array('s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E');
+        $str = str_ireplace($search, $replace, strtolower(trim($str)));
+        $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
+        $str = str_replace(' ', '-', $str);
+        return preg_replace('/\-{2,}/', '-', $str);
+    }
 }

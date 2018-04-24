@@ -21,12 +21,12 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group form-group-default form-group-default-select2">
-										<label>Tipe Produk</label>
-										<select name="tipe_produk" class="full-width" data-placeholder="Pilih Tipe Produk" data-init-plugin="select2">								
-											<option value="">Pilih Tipe Produk</option>
-											<option value="Baru">Baru</option>
-											<option value="Bekas">Bekas</option>
-										</select>
+									<label>Tipe Produk</label>
+									<select name="tipe_produk" class="full-width" data-placeholder="Pilih Tipe Produk" data-init-plugin="select2">
+										<option value="">Pilih Tipe Produk</option>
+										<option value="Baru">Baru</option>
+										<option value="Bekas">Bekas</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -52,15 +52,25 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
+								<label>Gambar Produk </label>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
 								<div class="form-group">
 									<h5>Deskripsi Produk</h5>
 									<div class="no-scroll card-toolbar">
 										<div class="summernote-wrapper">
-											<div id="summernote"><?=$produk->deskripsi?></div>
+											<div id="summernote">
+												<?=$produk->deskripsi?>
+											</div>
 										</div>
 									</div>
 								</div>
-								<textarea class="hide" name="deskripsi" id="deskripsi" cols="30" rows="10"><?=$produk->deskripsi?></textarea>
+								<textarea class="hide" name="deskripsi" id="deskripsi" cols="30" rows="10">
+									<?=$produk->deskripsi?>
+								</textarea>
 							</div>
 						</div>
 
@@ -75,3 +85,5 @@
 	</div>
 </div>
 <!-- END CONTAINER FLUID -->
+
+

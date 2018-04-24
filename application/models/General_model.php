@@ -24,6 +24,16 @@ class General_model extends CI_Model {
         return $this->db->get($table)->result();
     }
 
+    function get_list_limit($table, $filter, $limit=10, $orderby = 'ASC', $offset=0) {
+        if (!empty($filter)) {
+            $this->db->where($filter); 
+        }
+        
+        $this->db->limit($limit, $offset);
+        $this->db->order_by('id', $orderby);
+        return $this->db->get($table)->result();
+    }
+
     function count_table($table, $filter) {
         if (!empty($filter)) {
             $this->db->where($filter); 

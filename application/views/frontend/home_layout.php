@@ -15,7 +15,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
-
+		<?php
+		if (!empty($kentongans)) {
+			foreach ($kentongans as $kentongan) {
+		?>
+		<div class="style-msg alertmsg" style="margin-bottom:10px">
+			<div class="sb-msg"><i class="icon-warning-sign"></i><strong>Pesan Darurat!</strong> <?=$kentongan->pesan?> Lokasi:  <?=$kentongan->lokasi?></div>
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		</div>
+		<?php
+		}
+		}
+		?>
+		
 		<?php include APPPATH . "views/frontend/includes/topbar.php" ?>
 		<?php include APPPATH . "views/frontend/includes/header.php" ?>
 		<?php include APPPATH . "views/frontend/includes/slider.php" ?>

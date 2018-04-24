@@ -38,6 +38,11 @@
 			console.log(start.toISOString(), end.toISOString(), label);
 		});
 
+		$('#datepicker').datepicker({
+			
+			format: 'yyyy-mm-dd'
+		});
+
 		$('#summernote').summernote({
 			height: 200,
 			onfocus: function (e) {

@@ -11511,7 +11511,7 @@ input[type=checkbox]:not(:checked) + label.error { display: block !important; }
 -----------------------------------------------------------------*/
 
 
-#gotoTop, #kentongan {
+#gotoTop {
 	display: none;
 	z-index: 299;
 	position: fixed;
@@ -11531,16 +11531,27 @@ input[type=checkbox]:not(:checked) + label.error { display: block !important; }
 	border-radius: 2px;
 }
 
-body:not(.device-touch) #gotoTop {
+body:not(.device-touch) #gotoTop, body:not(.device-touch) #kentongan {
 	transition: background-color .2s linear;
 	-webkit-transition: background-color .2s linear;
 	-o-transition: background-color .2s linear;
 }
 
-.stretched #gotoTop { bottom: 30px; }
+.stretched #gotoTop, .stretched #kentongan { bottom: 30px; }
 
-#gotoTop:hover { background-color: #1ABC9C; }
+#gotoTop:hover, #kentongan:hover { background-color: #1ABC9C; }
 
+#kentongan { 
+	z-index: 299;
+	position: fixed;
+	text-align: center;
+	color: #FFF;
+	top: auto;
+	left: auto;
+	right: 43%;
+	bottom: 50px;
+	cursor: pointer;
+}
 
 /* ----------------------------------------------------------------
 	Error 404

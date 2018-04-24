@@ -14,7 +14,7 @@
 
 							<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/logo@2x.png" style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;" alt="Footer Logo">
 
-							<p>....</p>
+							<p>Sedulur.ga adalah portal website warga RT di lingkungan Kelurahan sedulur. Mari kita jalin silaturahim untuk menjadi guyub. </p>
 
 							<div class="line" style="margin: 30px 0;"></div>
 

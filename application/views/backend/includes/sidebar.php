@@ -44,14 +44,14 @@
 					<i data-feather="calendar"></i>
 				</span>
 			</li>
-			<!-- <li class="">
+			<li class="">
 				<a href="<?=base_url('admin/info')?>">
 					<span class="title">Info Penting</span>
 				</a>
 				<span class="icon-thumbnail">
 					<i data-feather="airplay"></i>
 				</span>
-			</li> -->
+			</li>
 			<li class="">
 				<a href="<?=base_url('admin/arisan')?>">
 					<span class="title">Arisan</span>
@@ -66,6 +66,14 @@
 				</a>
 				<span class="icon-thumbnail">
 					<i data-feather="shopping-cart"></i>
+				</span>
+			</li>
+			<li class="">
+				<a href="<?=base_url('admin/kentongan')?>">
+					<span class="title">Kentongan</span>
+				</a>
+				<span class="icon-thumbnail">
+					<i data-feather="alert-triangle"></i>
 				</span>
 			</li>
 		</ul>

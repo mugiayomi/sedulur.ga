@@ -11,7 +11,9 @@ class DashboardController extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
-		$data['page'] = 'modules/dashboard';
+		// $data['page'] = 'modules/dashboard';
+		// $data['page'] = 'modules/ga';
+		$data['page'] = 'modules/embed';
 		$this->load->view('backend/layout', $data);
 	}
 

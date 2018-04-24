@@ -68,6 +68,17 @@ $route['register/(:any)'] = 'RegisterController/$1';
 $route['profile'] = 'ProfileController';
 $route['profile/(:any)'] = 'ProfileController/$1';
 
+$route['arisan'] = 'FrontendController/arisan';
+$route['kontak'] = 'FrontendController/kontak';
+
+$route['agenda'] = 'FrontendController/agenda';
+$route['agenda/(:any)'] = 'FrontendController/showAgenda/$1';
+
+$route['info'] = 'FrontendController/info';
+$route['info/(:any)'] = 'FrontendController/showInfo/$1';
+
+$route['pasar'] = 'FrontendController/pasar';
+$route['pasar/(:any)'] = 'FrontendController/showPasar/$1';
 // BACKEND
 $route['admin'] = 'DashboardController';
 $route['admin/dashboard'] = 'DashboardController';
@@ -95,5 +106,9 @@ $route['admin/arisan/(:any)/(:any)'] = 'ArisanController/$1/$2';
 $route['admin/produk'] = 'ProdukController';
 $route['admin/produk/(:any)'] = 'ProdukController/$1';
 $route['admin/produk/(:any)/(:any)'] = 'ProdukController/$1/$2';
+
+$route['admin/kentongan'] = 'KentonganController';
+$route['admin/kentongan/(:any)'] = 'KentonganController/$1';
+$route['admin/kentongan/(:any)/(:any)'] = 'KentonganController/$1/$2';
 
 

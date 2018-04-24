@@ -35,6 +35,49 @@ class ArisanController extends CI_Controller {
 		$this->load->view('backend/layout', $data);
 	}
 
+	public function daftar($id)
+	{
+		$data['title'] = 'Mendaftar Arisan';
+		$data['page'] = 'modules/arisan/daftar';
+		$data['script'] = 'form';
+
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		$data['arisan'] = $this->general_model->get_single('TBL_ARISAN', "id='$id'");
+		$this->load->view('backend/layout', $data);
+	}
+
+	public function peserta($id)
+	{
+		$data['title'] = 'Peserta Arisan';
+		$data['page'] = 'modules/arisan/peserta';
+		$data['script'] = 'form';
+
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		$data['arisan'] = $this->general_model->get_single('TBL_ARISAN', "id='$id'");
+		$data['pesertas'] = $this->arisan_model->get_list_peserta_arisan($id);
+		$this->load->view('backend/layout', $data);
+	}
+
+	public function bayar($id)
+	{
+		$data['title'] = 'Membayar Arisan';
+		$data['page'] = 'modules/arisan/bayar';
+		$data['script'] = 'form';
+
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		$data['arisan'] = $this->general_model->get_single('TBL_ARISAN', "id='$id'");
+		$this->load->view('backend/layout', $data);
+	}
+
 	public function edit($id)
 	{
 		$id = xss_clean($id);
@@ -42,7 +85,7 @@ class ArisanController extends CI_Controller {
 		$data['title'] = 'Edit arisan';
 		$data['page'] = 'modules/arisan/edit';
 		$data['script'] = 'form';
-		$data['arisan'] = $this->general_model->get_single('TBL_arisan', "id='$id'");
+		$data['arisan'] = $this->general_model->get_single('TBL_ARISAN', "id='$id'");
 	
 		$data['csrf'] = array(
 			'name' => $this->security->get_csrf_token_name(),
@@ -55,6 +98,7 @@ class ArisanController extends CI_Controller {
 	public function store()
 	{
 		$data = $this->input->post();
+		$data['id_user'] = $this->session->userdata['logged_in']->id;
 								
 		if ($this->arisan_model->store($data)) {
 			setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
@@ -63,6 +107,36 @@ class ArisanController extends CI_Controller {
 		}
 					
 		redirect(base_url() . 'admin/arisan');  
+	}
+
+	public function storePeserta()
+	{
+		$data = $this->input->post();
+
+		$data['id_user'] = $this->session->userdata['logged_in']->id;
+								
+		if ($this->arisan_model->storePeserta($data)) {
+			setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+		} else {
+			setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
+		}
+					
+		redirect(base_url() . 'arisan');  
+	}
+
+	public function storeBayar()
+	{
+		$data = $this->input->post();
+
+		$data['id_peserta_arisan'] = $this->session->userdata['logged_in']->id;
+								
+		if ($this->arisan_model->storeBayar($data)) {
+			setFlashMessage('success', "Selamat.", "Data Berhasil disimpan.");
+		} else {
+			setFlashMessage('danger', 'Maaf!', 'Data Gagal Disimpan.');
+		}
+					
+		redirect(base_url() . 'arisan');  
 	}
 
 	public function update()

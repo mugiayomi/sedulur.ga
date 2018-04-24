@@ -1,7 +1,285 @@
-<div class="content-wrap">
+<div class="content-wrap" style="padding-bottom:0px">
+
+	<div class="container clearfix">
+		<div class="col_full clearfix">
+
+			<div class="fancy-title title-border">
+				<h3>Info Penting</h3>
+			</div>
+
+			<?php
+			$i = 1;
+			foreach ($infos as $info) {
+				$col = '';
+				if ($i % 3 == 0) {
+					$col = 'col_last';
+				}
+				$i++;
+			?>
+				<div class="col_one_third nobottommargin <?=$col?>">
+					<div class="ipost clearfix">
+						<div class="entry-image">
+							<a href="#">
+								<img class="image_fade" src="<?=base_url($info->gambar)?>" alt="Image">
+							</a>
+						</div>
+						<div class="entry-title">
+							<h3>
+								<a href="<?=base_url('info/'.$info->slug)?>">
+									<?=$info->judul?>
+								</a>
+							</h3>
+						</div>
+						<ul class="entry-meta clearfix">
+							<li>
+								<i class="icon-calendar3"></i>
+								<?=$info->wk_rekam?>
+							</li>
+							<!-- <li>
+								<a href="blog-single.html#comments">
+									<i class="icon-comments"></i> 23</a>
+							</li> -->
+						</ul>
+						<div class="entry-content">
+							<p>
+								<?=getExcerpt($info->deskripsi, 30)?>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<?php
+				
+			}
+			?>
+
+		</div>
+	</div>
 
 	<div class="container clearfix">
 
+		<div class="clear"></div>
+		<div class="line topmargin-sm bottommargin-lg"></div>
+
+		<div style="position: relative;">
+			<div class="heading-block nobottomborder">
+				<h3>Pasar RT</h3>
+			</div>
+
+			<div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg" data-margin="10" data-nav="true" data-loop="true"
+			data-pagi="false" data-items-xs="1" data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
+
+				<?php
+				foreach ($products as $product) {
+				?>
+					<div class="oc-item">
+						<div class="real-estate-item">
+							<div class="real-estate-item-image">
+								<div class="badge badge-danger bgcolor-2">For Sale</div>
+								<a href="<?=base_url('pasar/' . $product->slug)?>">
+									<img src="<?=base_url($product->gambar)?>" alt="<?=$product->nama?>">
+								</a>
+								<div class="real-estate-item-price">
+									Rp.
+									<?=number_format($product->harga)?>
+										<!-- <span>Leasehold</span> -->
+								</div>
+								<!-- <div class="real-estate-item-info clearfix">
+								<a href="#">
+									<i class="icon-line-stack-2"></i>
+								</a>
+								<a href="#">
+									<i class="icon-line-heart"></i>
+								</a>
+							</div> -->
+							</div>
+
+							<div class="real-estate-item-desc">
+								<h3>
+								<a href="<?=base_url('pasar/' . $product->slug)?>">
+										<?=$product->nama?>
+									</a>
+								</h3>
+								<span>
+									<?=getExcerpt($product->deskripsi, 10)?>
+								</span>
+
+								<!-- <a href="#" class="real-estate-item-link">
+								<i class="icon-info"></i>
+							</a> -->
+
+								<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+
+								<!-- <div class="real-estate-item-features t500 font-primary clearfix">
+								<div class="row no-gutters">
+									<div class="col-lg-4 nopadding">Beds:
+										<span class="color">3</span>
+									</div>
+									<div class="col-lg-4 nopadding">Baths:
+										<span class="color">3</span>
+									</div>
+									<div class="col-lg-4 nopadding">Area:
+										<span class="color">150 sqm</span>
+									</div>
+									<div class="col-lg-4 nopadding">Pool:
+										<span class="text-success">
+											<i class="icon-check-sign"></i>
+										</span>
+									</div>
+									<div class="col-lg-4 nopadding">Internet:
+										<span class="text-success">
+											<i class="icon-check-sign"></i>
+										</span>
+									</div>
+									<div class="col-lg-4 nopadding">Cleaning:
+										<span class="text-danger">
+											<i class="icon-minus-sign-alt"></i>
+										</span>
+									</div>
+								</div>
+							</div> -->
+							</div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
+
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+		<!-- <div class="promo promo-dark promo-flat bottommargin-lg">
+			<h3 class="t400 ls1">Special Offers on Villa Long Term Rentals &amp; Lease Agreements</h3>
+			<a href="#" class="button button-dark button-large button-rounded">Contact Now</a>
+		</div> -->
+
+		<!-- <div class="row real-estate-properties clearfix">
+
+			<div class="col-lg-7">
+				<a href="#" style="background: url('demos/real-estate/images/cities/4.jpg') no-repeat bottom center; background-size: cover;">
+					<div class="vertical-middle dark center">
+						<div class="heading-block nomargin noborder">
+							<h3 class="capitalize t500">RW 01</h3>
+							<span style="margin-top: 5px; font-size: 17px;">230 Rumah</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-5">
+				<a href="#" style="background: url('demos/real-estate/images/cities/2.jpg') no-repeat center center; background-size: cover;">
+					<div class="vertical-middle dark center">
+						<div class="heading-block nomargin noborder">
+							<h3 class="capitalize t500">RW 02</h3>
+							<span style="margin-top: 5px; font-size: 17px;">120 Rumah</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-lg-4">
+				<a href="#" style="background: url('demos/real-estate/images/cities/3.jpg') no-repeat center center; background-size: cover;">
+					<div class="vertical-middle dark center">
+						<div class="heading-block nomargin noborder">
+							<h3 class="capitalize t500">RW 03</h3>
+							<span style="margin-top: 5px; font-size: 17px;">80 Rumah</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4">
+				<a href="#" style="background: url('demos/real-estate/images/cities/1.jpg') no-repeat center center; background-size: cover;">
+					<div class="vertical-middle dark center">
+						<div class="heading-block nomargin noborder">
+							<h3 class="capitalize t500">RW 04</h3>
+							<span style="margin-top: 5px; font-size: 17px;">310 Rumah</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4">
+				<a href="#" style="background: url('demos/real-estate/images/cities/5.jpg') no-repeat center center; background-size: cover;">
+					<div class="vertical-middle dark center">
+						<div class="heading-block nomargin noborder">
+							<h3 class="capitalize t500">RW 05</h3>
+							<span style="margin-top: 5px; font-size: 17px;">190 Rumah</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+		</div> -->
+		<div class="col_full clearfix">
+
+			<div class="fancy-title title-border">
+				<h3>Agenda Kegiatan</h3>
+			</div>
+
+			<div class="col-lg-12 col-md-12 topmargin bottommargin">
+				<div id="posts" class="events small-thumbs">
+
+					<?php
+					foreach ($agendas as $agenda) {
+					?>
+						<div class="col_full">
+							<div class="entry ">
+								<div class="entry-image">
+									<a href="#">
+										<img src="<?php echo !empty($agenda->gambar) ? base_url($agenda->gambar) : base_url('assets/frontend/demos/real-estate/images/hero/3.jpg')?>"
+										alt="<?=$agenda->judul?>">
+										<div class="entry-date">
+											<?=substr($agenda->tanggal_mulai,8,2)?>
+												<span>
+													<?=toNamaBulanPendek(substr($agenda->tanggal_mulai,5,2))?>
+												</span>
+										</div>
+									</a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2>
+											<a href="<?=base_url('agenda/'.$agenda->slug)?>">
+												<?=$agenda->judul?>
+											</a>
+										</h2>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li>
+											<a href="#">
+												<i class="icon-time"></i>
+												<?=$agenda->tanggal_mulai?> -
+													<?=$agenda->tanggal_akhir?>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="icon-map-marker2"></i>
+												<?=$agenda->lokasi?>
+											</a>
+										</li>
+									</ul>
+									<div class="entry-content">
+										<?=getExcerpt($agenda->deskripsi)?>
+											<div class="clear"></div>
+											<br>
+											<a href="<?=base_url('agenda/'.$agenda->slug)?>" class="btn btn-danger">Selengkapnya</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<?php
+					}
+					?>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="clear"></div>
+		<div class="line topmargin-sm bottommargin-lg"></div>
 		<div class="col_one_third">
 			<div class="feature-box fbox-plain">
 				<div class="fbox-icon">
@@ -74,276 +352,6 @@
 				<h3 class="t400">Agenda Kegiatan</h3>
 				<p>Agenda Bla Bla bla.</p>
 			</div>
-		</div>
-
-		<div class="clear"></div>
-		<div class="line topmargin-sm bottommargin-lg"></div>
-
-		<div style="position: relative;">
-			<div class="heading-block nobottomborder">
-				<h3>Barang Terlaris</h3>
-			</div>
-
-			<div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg" data-margin="10" data-nav="true" data-loop="true"
-			data-pagi="false" data-items-xs="1" data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
-
-				<div class="oc-item">
-					<div class="real-estate-item">
-						<div class="real-estate-item-image">
-							<div class="badge badge-danger bgcolor-2">For Sale</div>
-							<a href="#">
-								<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/items/1.jpg" alt="Image 1">
-							</a>
-							<div class="real-estate-item-price">
-								$1.2m
-								<span>Leasehold</span>
-							</div>
-							<div class="real-estate-item-info clearfix">
-								<a href="#">
-									<i class="icon-line-stack-2"></i>
-								</a>
-								<a href="#">
-									<i class="icon-line-heart"></i>
-								</a>
-							</div>
-						</div>
-
-						<div class="real-estate-item-desc">
-							<h3>
-								<a href="#">3 Bedroom Villa</a>
-							</h3>
-							<span>Seminyak Area</span>
-
-							<a href="#" class="real-estate-item-link">
-								<i class="icon-info"></i>
-							</a>
-
-							<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-							<div class="real-estate-item-features t500 font-primary clearfix">
-								<div class="row no-gutters">
-									<div class="col-lg-4 nopadding">Beds:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Baths:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Area:
-										<span class="color">150 sqm</span>
-									</div>
-									<div class="col-lg-4 nopadding">Pool:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Internet:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Cleaning:
-										<span class="text-danger">
-											<i class="icon-minus-sign-alt"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="oc-item">
-					<div class="real-estate-item">
-						<div class="real-estate-item-image">
-							<div class="badge badge-success">Hot Deal</div>
-							<a href="#">
-								<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/items/2.jpg" alt="Image 2">
-							</a>
-							<div class="real-estate-item-price">
-								$200,000
-								<span>bi-annually</span>
-							</div>
-							<div class="real-estate-item-info clearfix">
-								<a href="#">
-									<i class="icon-line-stack-2"></i>
-								</a>
-								<a href="#">
-									<i class="icon-line-heart"></i>
-								</a>
-							</div>
-						</div>
-
-						<div class="real-estate-item-desc">
-							<h3>
-								<a href="#">3 Bedroom Villa</a>
-							</h3>
-							<span>Seminyak Area</span>
-
-							<a href="#" class="real-estate-item-link">
-								<i class="icon-info"></i>
-							</a>
-
-							<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-							<div class="real-estate-item-features t500 clearfix">
-								<div class="row no-gutters">
-									<div class="col-lg-4 nopadding">Beds:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Baths:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Area:
-										<span class="color">150 sqm</span>
-									</div>
-									<div class="col-lg-4 nopadding">Pool:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Internet:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Cleaning:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="oc-item">
-					<div class="real-estate-item">
-						<div class="real-estate-item-image">
-							<div class="badge badge-danger">Long Term Rental</div>
-							<a href="#">
-								<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/items/4.jpg" alt="Image 3">
-							</a>
-							<div class="real-estate-item-price">
-								$1600
-								<span>per month</span>
-							</div>
-							<div class="real-estate-item-info clearfix">
-								<a href="#">
-									<i class="icon-line-stack-2"></i>
-								</a>
-								<a href="#">
-									<i class="icon-line-heart"></i>
-								</a>
-							</div>
-						</div>
-
-						<div class="real-estate-item-desc">
-							<h3>
-								<a href="#">3 Bedroom Villa</a>
-							</h3>
-							<span>Seminyak Area</span>
-
-							<a href="#" class="real-estate-item-link">
-								<i class="icon-info"></i>
-							</a>
-
-							<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-
-							<div class="real-estate-item-features t500 clearfix">
-								<div class="row no-gutters">
-									<div class="col-lg-4 nopadding">Beds:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Baths:
-										<span class="color">3</span>
-									</div>
-									<div class="col-lg-4 nopadding">Area:
-										<span class="color">150 sqm</span>
-									</div>
-									<div class="col-lg-4 nopadding">Pool:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Internet:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-									<div class="col-lg-4 nopadding">Cleaning:
-										<span class="text-success">
-											<i class="icon-check-sign"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="clear"></div>
-
-		<!-- <div class="promo promo-dark promo-flat bottommargin-lg">
-			<h3 class="t400 ls1">Special Offers on Villa Long Term Rentals &amp; Lease Agreements</h3>
-			<a href="#" class="button button-dark button-large button-rounded">Contact Now</a>
-		</div> -->
-
-		<div class="row real-estate-properties clearfix">
-
-			<div class="col-lg-7">
-				<a href="#" style="background: url('demos/real-estate/images/cities/4.jpg') no-repeat bottom center; background-size: cover;">
-					<div class="vertical-middle dark center">
-						<div class="heading-block nomargin noborder">
-							<h3 class="capitalize t500">RW 01</h3>
-							<span style="margin-top: 5px; font-size: 17px;">230 Rumah</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-5">
-				<a href="#" style="background: url('demos/real-estate/images/cities/2.jpg') no-repeat center center; background-size: cover;">
-					<div class="vertical-middle dark center">
-						<div class="heading-block nomargin noborder">
-							<h3 class="capitalize t500">RW 02</h3>
-							<span style="margin-top: 5px; font-size: 17px;">120 Rumah</span>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-lg-4">
-				<a href="#" style="background: url('demos/real-estate/images/cities/3.jpg') no-repeat center center; background-size: cover;">
-					<div class="vertical-middle dark center">
-						<div class="heading-block nomargin noborder">
-							<h3 class="capitalize t500">RW 03</h3>
-							<span style="margin-top: 5px; font-size: 17px;">80 Rumah</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4">
-				<a href="#" style="background: url('demos/real-estate/images/cities/1.jpg') no-repeat center center; background-size: cover;">
-					<div class="vertical-middle dark center">
-						<div class="heading-block nomargin noborder">
-							<h3 class="capitalize t500">RW 04</h3>
-							<span style="margin-top: 5px; font-size: 17px;">310 Rumah</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4">
-				<a href="#" style="background: url('demos/real-estate/images/cities/5.jpg') no-repeat center center; background-size: cover;">
-					<div class="vertical-middle dark center">
-						<div class="heading-block nomargin noborder">
-							<h3 class="capitalize t500">RW 05</h3>
-							<span style="margin-top: 5px; font-size: 17px;">190 Rumah</span>
-						</div>
-					</div>
-				</a>
-			</div>
-
 		</div>
 
 	</div>
@@ -423,179 +431,4 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- <div class="container clear-bottommargin clearfix">
-
-		<div class="col_two_third">
-
-			<div class="tabs tabs-justify tabs-tb tabs-alt nobottommargin clearfix" id="realestate-tabs" data-active="2">
-
-				<ul class="tab-nav clearfix">
-					<li>
-						<a href="#realestate-tab-1">Why Us?</a>
-					</li>
-					<li>
-						<a href="#realestate-tab-2">Properties</a>
-					</li>
-					<li>
-						<a href="#realestate-tab-3">Legal</a>
-					</li>
-				</ul>
-
-				<div class="tab-container">
-
-					<div class="tab-content clearfix" id="realestate-tab-1">
-						<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet
-							mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean
-							tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae
-							ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci
-							tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-							<div class="col_one_fourth nobottommargin center">
-								<div class="counter ls1 t600" style="color: #D2D2D2;">
-									<span data-from="100" data-to="964" data-refresh-interval="50" data-speed="2000"></span>
-								</div>
-								<h5>Floors Built</h5>
-							</div>
-
-							<div class="col_one_fourth nobottommargin center">
-								<div class="counter ls1 t600" style="color: #D2D2D2;">
-									<span data-from="100" data-to="8514" data-refresh-interval="50" data-speed="2500"></span>
-								</div>
-								<h5>Employees</h5>
-							</div>
-
-							<div class="col_one_fourth nobottommargin center">
-								<div class="counter ls1 t600" style="color: #D2D2D2;">
-									<span data-from="100" data-to="458" data-refresh-interval="50" data-speed="3500"></span>
-								</div>
-								<h5>Happy Clients</h5>
-							</div>
-
-							<div class="col_one_fourth nobottommargin center col_last">
-								<div class="counter ls1 t600" style="color: #D2D2D2;">
-									<span data-from="14" data-to="159" data-refresh-interval="15" data-speed="2700"></span>
-								</div>
-								<h5>Cities Served</h5>
-							</div>
-					</div>
-					<div class="tab-content clearfix" id="realestate-tab-2">
-						<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi
-							neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent
-							per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent
-							eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-						<div class="row clearfix">
-							<div class="col-md-4">
-								<ul class="iconlist nobottommargin">
-									<li>
-										<i class="icon-ok"></i> 100% Assurance</li>
-									<li>
-										<i class="icon-ok"></i> Hard Working</li>
-									<li>
-										<i class="icon-ok"></i> Trustworthy</li>
-								</ul>
-							</div>
-							<div class="col-md-4">
-								<ul class="iconlist nobottommargin">
-									<li>
-										<i class="icon-ok"></i> Intelligent</li>
-									<li>
-										<i class="icon-ok"></i> Always Curious</li>
-									<li>
-										<i class="icon-ok"></i> Perfectionists</li>
-								</ul>
-							</div>
-							<div class="col-md-4">
-								<ul class="iconlist nobottommargin">
-									<li>
-										<i class="icon-ok"></i> Friendly &amp; Helpful</li>
-									<li>
-										<i class="icon-ok"></i> Accomodating Nature</li>
-									<li>
-										<i class="icon-ok"></i> Available 24x7</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="tab-content clearfix" id="realestate-tab-3">
-
-						<div class="clear-bottommargin-sm">
-							<div class="row clearfix">
-								<div class="col-md-7 bottommargin-sm">
-									<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis
-										scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus
-										eros massa ut dolor.</p>
-									<div class="clear-bottommargin-sm">
-										<div class="row clearfix">
-											<div class="col-md-6 bottommargin-sm">
-												<address>
-													<strong>Headquarters:</strong>
-													<br> 795 Folsom Ave, Suite 600
-													<br> San Francisco, CA 94107
-													<br>
-												</address>
-											</div>
-											<div class="col-md-6 bottommargin-sm">
-												<abbr title="Phone Number">
-													<strong>Phone:</strong>
-												</abbr> (91) 8547 632521
-												<br>
-												<abbr title="Fax">
-													<strong>Fax:</strong>
-												</abbr> (91) 11 4752 1433
-												<br>
-												<abbr title="Email Address">
-													<strong>Email:</strong>
-												</abbr> info@canvas.com
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-5 bottommargin-sm">
-									<img src="https://maps.googleapis.com/maps/api/staticmap?center=-37.814107,144.963280&zoom=12&markers=-37.814107,144.963280&size=300x180"
-									alt="Google Map" class="img-thumbnail">
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="col_one_third col_last">
-
-			<h4 class="center">Top Builders</h4>
-
-			<ul class="clients-grid grid-2 nobottommargin clearfix">
-				<li style="padding: 20px;">
-					<a href="#" style="opacity: 0.9">
-						<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/builders/1.png" alt="Clients">
-					</a>
-				</li>
-				<li style="padding: 20px;">
-					<a href="#" style="opacity: 0.9">
-						<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/builders/2.png" alt="Clients">
-					</a>
-				</li>
-				<li style="padding: 20px;">
-					<a href="#" style="opacity: 0.9">
-						<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/builders/3.png" alt="Clients">
-					</a>
-				</li>
-				<li style="padding: 20px;">
-					<a href="#" style="opacity: 0.9">
-						<img src="<?=base_url()?>assets/frontend/demos/real-estate/images/builders/4.png" alt="Clients">
-					</a>
-				</li>
-			</ul>
-
-		</div>
-
-		<div class="clear"></div>
-
-	</div> -->
-
 </div>

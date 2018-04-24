@@ -5,7 +5,7 @@
 			<!-- START card -->
 			<div class="card card-transparent">
 				<div class="card-block">
-					<form method="POST" action="<?=base_url('admin/produk/store')?>" role="form" autocomplete="off">
+					<form method="POST" action="<?=base_url('admin/produk/store')?>" role="form" autocomplete="off" enctype="multipart/form-data">
 						<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						<div class="row">
 							<div class="col-md-12">
@@ -45,6 +45,16 @@
 									<div class="form-input-group">
 										<label>Stok Barang </label>
 										<input type="text" class="form-control" name="stok" placeholder="Jumlah Stok Barang" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group form-group-default input-group">
+									<div class="form-input-group">
+										<label>Gambar Utama</label>
+										<input type="file" class="form-control" name="gambar" placeholder="Gambar" required>
 									</div>
 								</div>
 							</div>

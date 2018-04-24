@@ -108,7 +108,7 @@ class RegisterController extends CI_Controller {
     
     public function sendEmail($emailAddress, $judul, $isi) {
         $config['protocol'] = "smtp";
-        $config['smtp_host'] = "ssl://mail.sedulur.ga"; // kita akan mengirim via akun google
+        $config['smtp_host'] = "ssl://mail.sedulur.ga"; // kita akan mengirim via akun ini
         $config['smtp_port'] = "465";
         $config['smtp_user'] = "admin@sedulur.ga"; // ini adalah akun yang akan mengirim email
         $config['smtp_pass'] = "sedulur"; // ini adalah password akun yang akan mengirim email
@@ -122,7 +122,7 @@ class RegisterController extends CI_Controller {
         $subject = "$judul";
         $isiEmail = "$isi";
                         
-        $this->email->from('admin@sedulur.ga', 'Sedulur.ga'); // email pengirim
+        $this->email->from('admin@sedulur.ga', 'Admin Sedulur'); // email pengirim
         $list = $tomail;
         $this->email->bcc($list);
         $this->email->subject($subject);
